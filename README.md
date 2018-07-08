@@ -1,27 +1,31 @@
-# NgDraggable
+# NgDragDrop
+Proof of Concept around building a generic drag and drop feature for Angular. Very far from complete, but still fun to have a look at. Might become something in the future...
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.5.
+## Making an element draggable
+Make an element draggable by adding a `draggable` attribute to it.
+```html
+<div draggable>
+    My draggable element
+</div>
+```
+As it is dropped, the receiver will get the element passed to it.
 
-## Development server
+If you want to pass data to the receiver instead of just the element, bind the data to the attribute
+```html
+<div [draggable]="{ message:'Hello world!' }">
+    My draggable element with data
+</div>
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Creating a "drop zone"
+Just add a `dropZone` attribute to the target element.
+```html
+<div dropZone></div>
+```
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## Future
+The current demo only moves the dragged element to the drop zone. In the future it would be interesting to make it possible to bind the drop like
+```html
+<div dropZone (drop)="onDrop($event)"></div>
+```
+Having the `$event` object contain the `handled` property to handle whether or not the component have handled the drop or not. The current, hardcoded version where the `dropZone` directive was just a quick version to test is for this POC...

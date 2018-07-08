@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    position: relative;
+}
+
+app-root {
+    display: block;
+    margin: auto;
+    max-width: 400px;
+    padding: 50px;
+
+    #container {
+        position: relative;
+    }
+
+    ul {
+        display: inline-block;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: auto;
+    }
+}
+
+div.draggable-item {
+    display: block;
+    border: 1px solid #666;
+    padding: 10px;
+    cursor: default;
+
+    &.dragging {
+        box-shadow: 2px 2px #888888;
+        background-color: white;
+    }
+}
+
+.drop-zone {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+
+    &.drag-over {
+        background-color: blueviolet;
+    }
+}
